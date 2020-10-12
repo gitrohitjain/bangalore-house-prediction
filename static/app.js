@@ -37,10 +37,10 @@ function getBalconyValue() {
     var location = document.getElementById("uiLocations");
     var estPrice = document.getElementById("uiEstimatedPrice");
   
-    var url = "http://127.0.0.1:5000/predict_home_price";
+    var url1 = origin + "/predict_home_price";
     
   
-    $.post(url, {
+    $.post(url1, {
         balcony: balconies,
         total_sqft: parseFloat(sqft.value),
         bhk: bhk,
@@ -55,7 +55,9 @@ function getBalconyValue() {
   
   function onPageLoad() {
     console.log( "document loaded" );
-    var url = "http://127.0.0.1:5000/get_location_names"; 
+    const origin  = window.location.origin;
+    var url = origin + "/get_location_names"; 
+    console.log('url:',url);
     
     $.get(url,function(data, status) {
         console.log("got response for get_location_names request");
